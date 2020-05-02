@@ -23,7 +23,11 @@ b.Agar nantinya pencatatan lebih rapi dan terstruktur, log akan dibagi menjadi b
 c.Untuk log level WARNING, merupakan pencatatan log untuk syscall rmdir dan unlink.<br/>
 d.Sisanya, akan dicatat dengan level INFO.<br/>
 e.Format untuk logging yaitu:<br/>
-`[LEVEL]::[yy][mm][dd]-[HH]:[MM]:[SS]::[CMD]::[DESC ...]`
-`INFO::200419-18:29:28::MKDIR::/iz1`
-`INFO::200419-18:29:33::CREAT::/iz1/yena.jpg`
-`INFO::200419-18:29:33::RENAME::/iz1/yena.jpg::/iz1/yena.jpeg`
+`[LEVEL]::[yy][mm][dd]-[HH]:[MM]:[SS]::[CMD]::[DESC ...]`<br/>
+`INFO::200419-18:29:28::MKDIR::/iz1`<br/>
+`INFO::200419-18:29:33::CREAT::/iz1/yena.jpg`<br/>
+`INFO::200419-18:29:33::RENAME::/iz1/yena.jpg::/iz1/yena.jpeg`<br/>
+
+# PEMBAHASAN
+
+
