@@ -29,5 +29,7 @@ e.Format untuk logging yaitu:<br/>
 `INFO::200419-18:29:33::RENAME::/iz1/yena.jpg::/iz1/yena.jpeg`<br/>
 
 # PEMBAHASAN
+![direktori](https://user-images.githubusercontent.com/56763570/80864562-5c21d600-8c38-11ea-8f03-355b918e19d3.PNG)<br/>
+Deklarasi untuk direktori encv1_, array untuk menampung `9(ku@AW1[Lmvgax6q`5Y2Ry?+sF!^HKQiBXCUSe&0M.b%rI'7d)o4~VfZ*{#:}ETt$3J-zpc]lnh8,GwP_ND|jO`, dan key.
 
 
