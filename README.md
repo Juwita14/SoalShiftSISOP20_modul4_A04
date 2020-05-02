@@ -11,7 +11,7 @@ c.Apabila sebuah direktori terenkripsi di-rename menjadi tidak terenkripsi, maka
 d.Setiap pembuatan direktori terenkripsi baru (mkdir ataupun rename) akan tercatat ke sebuah database/log berupa file.<br/>
 e.Semua file yang berada dalam direktori ter enkripsi menggunakan caesar cipher dengan key.<br/>
 
-`9(ku@AW1[Lmvgax6q`5Y2Ry?+sF!^HKQiBXCUSe&0M.b%rI'7d)o4~VfZ*{#:}ETt$3J-zpc]lnh8,GwP_ND|jO`<br/>
+`9(ku@AW1[Lmvgax6q5Y2Ry?+sF!^HKQiBXCUSe&0M.b%rI'7d)o4~VfZ*{#:}ETt$3J-zpc]lnh8,GwP_ND|jO`<br/>
 
 Misal kan ada file bernama “kelincilucu.jpg” dalam directory FOTO_PENTING, dan key yang dipakai adalah 10<br/>
 “encv1_rahasia/FOTO_PENTING/kelincilucu.jpg” => “encv1_rahasia/ULlL@u]AlZA(/g7D.|_.Da_a.jpg<br/>
@@ -30,6 +30,12 @@ e.Format untuk logging yaitu:<br/>
 
 # PEMBAHASAN
 ![direktori](https://user-images.githubusercontent.com/56763570/80864562-5c21d600-8c38-11ea-8f03-355b918e19d3.PNG)<br/>
-Deklarasi untuk direktori encv1_, array untuk menampung `9(ku@AW1[Lmvgax6q`5Y2Ry?+sF!^HKQiBXCUSe&0M.b%rI'7d)o4~VfZ*{#:}ETt$3J-zpc]lnh8,GwP_ND|jO`, dan key.
+Deklarasi untuk direktori encv1_, array untuk menampung `9(ku@AW1[Lmvgax6q5Y2Ry?+sF!^HKQiBXCUSe&0M.b%rI'7d)o4~VfZ*{#:}ETt$3J-zpc]lnh8,GwP_ND|jO`, dan key.
+<br/>![exte](https://user-images.githubusercontent.com/56763570/80864659-f6821980-8c38-11ea-9bf3-d9a5810c3f51.PNG)<br/>
+Digunakan untuk mengetahui  extension file.
+<br/>![ekrip](https://user-images.githubusercontent.com/56763570/80864699-25988b00-8c39-11ea-80ae-c97862ab797e.PNG)
+Digunakan untuk enskripsi versi 1
+<br/>![dekrip](https://user-images.githubusercontent.com/56763570/80864750-77411580-8c39-11ea-8b2d-013b7eb3c1d2.PNG)<br/>
+Digunakan untuk dekrip versi 1
 
 
