@@ -166,7 +166,7 @@ static int xmp_read(const char *path, char *buf, size_t size, off_t offset, stru
 
 	(void) fi;
 
-	fd = open(path, O_RDONLY);
+	fd = open(fpath, O_RDONLY);
 	if (fd == -1)
 		return -errno;
 	res = pread(fd, buf, size, offset);
