@@ -14,11 +14,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#define key 13
-
-static const char *dirpath = "/home/juwita/sisop/modul4";
+static const char *dirpath = "/home/juwita/Documnets1";
 char array[] = "9(ku@AW1[Lmvgax6q`5Y2Ry?+sF!^HKQiBXCUSe&0M.b%rI'7d)o4~VfZ*{#:}ETt$3J-zpc]lnh8,GwP_ND|jO";
-
+const int key = 13;
 
 char *getExt (char *str) {
     char *ext = strrchr (str, '.');
@@ -27,8 +25,7 @@ char *getExt (char *str) {
     return ext;
 }
 
-void caesarenk(char *str)
-{
+void caesarenk(char *str){
 	if(strcmp(str,".") == 0 || strcmp(str,"..") == 0) return;
 	int len = strlen(getExt(str));
 	for ( int i = 0; i < strlen(str)-len ;i++) {
@@ -43,26 +40,25 @@ void caesarenk(char *str)
 	}
 }
 
-void caesardek(char *strde)
-{
-	if(strcmp(strde,".") == 0 || strcmp(strde,"..") == 0) return;
+void caesardek(char *str){
+	if(strcmp(str,".") == 0 || strcmp(str,"..") == 0) return;
 	int f1 = 0;
 	int f2 = 0;
-	if(strncmp(strde,"encv1_",6)==0){
+	if(strncmp(str,"encv1_",6)==0){
 		f1 = 1;
 		f2 = 1;
 	}
-	int len = strlen(getExt(strde));
-	for ( int i = 0; i < strlen(strde)-len; i++) {
-		if(strde[i] == '/'){
+	int len = strlen(getExt(str));
+	for ( int i = 0; i < strlen(str)-len; i++) {
+		if(str[i] == '/'){
 			f1=0;
 		}
-		if((f1 != 1 && strde[i] != '/') && f2 == 1){
+		if((f1 != 1 && str[i] != '/') && f2 == 1){
 			for (int j = 0; j < strlen(array); j++) {
-	     		if(strde[i] == array[j]) {
-	        		strde[i] = array[(j+strlen(array)-key) % strlen(array)];
-	        		break;
-        		}
+	     			if(str[i] == array[j]) {
+	        			str[i] = array[(j+strlen(array)-key) % strlen(array)];
+	        			break;
+        			}
 			}
 		}
 	}
@@ -88,48 +84,51 @@ void logs (char* cmd, char* deskripsi){
     fclose(file);
 }
 
-static  int  xmp_getattr(const char *path, struct stat *stbuf){
+static int xmp_getattr(const char *path, struct stat *stbuf){
 	int res;
 	char fpath[1000];
 	char *encv1 = strstr(path,"encv1_");
-	sprintf(fpath,"%s%s",dirpath,path);
+	sprintf(fpath, "%s%s",dirpath,path);
 
 	if(encv1 != NULL){
         	caesardek(encv1);
-       		sprintf(fpath,"%s/%s",dirpath,encv1);
+        	sprintf(fpath,"%s/%s",dirpath,encv1);
 	}
 
 	res = lstat(fpath, stbuf);
 	if (res == -1)
 		return -errno;
+
 	return 0;
 }
 
-static int xmp_readdir(const char *path, void *buf, fuse_fill_dir_t filler,off_t offset, struct fuse_file_info *fi){
+static int xmp_readdir(const char *path, void *buf, fuse_fill_dir_t filler,
+		       off_t offset, struct fuse_file_info *fi){
 	char fpath[1000];
 	char *encv1 = strstr(path,"encv1_");
 	sprintf(fpath, "%s%s",dirpath,path);
 	if(strcmp(path,"/") == 0)
 	{
-		path=dirpath;
+		path = dirpath;
 		sprintf(fpath,"%s",path);
 	}
-	else
-	{
+  	else
+  	{
 		if(encv1 != NULL ){
-        		caesardek(encv1);
-        		sprintf(fpath,"%s/%s",dirpath,encv1);	
-		}
-	}
+        	caesardek(encv1);
+        	sprintf(fpath,"%s/%s",dirpath,encv1);
+         }
 
+  	}
 	int res = 0;
+
 	DIR *dp;
 	struct dirent *de;
 
 	(void) offset;
 	(void) fi;
 
-	dp = opendir(path);
+	dp = opendir(fpath);
 	if (dp == NULL)
 		return -errno;
 
@@ -137,12 +136,12 @@ static int xmp_readdir(const char *path, void *buf, fuse_fill_dir_t filler,off_t
 		struct stat st;
 		memset(&st, 0, sizeof(st));
 		st.st_ino = de->d_ino;
-		st.st_mode = de->d_type << 12;
+  		st.st_mode = de->d_type << 12;
 
 		if(encv1 != NULL){
 			caesarenk(de->d_name);
 		}
-		res = (filler(buf, de->d_name, &st, 0));
+    		res = (filler(buf, de->d_name, &st, 0));
 		if(res!=0)
 			break;
 	}
@@ -151,15 +150,16 @@ static int xmp_readdir(const char *path, void *buf, fuse_fill_dir_t filler,off_t
 }
 
 
-static int xmp_read(const char *path, char *buf, size_t size, off_t offset, struct fuse_file_info *fi){
+
+static int xmp_read(const char *path, char *buf, size_t size, off_t offset,
+		    struct fuse_file_info *fi){
 	int fd;
 	int res;
     	char fpath[1000];
     	char *encv1 = strstr(path,"encv1_");
 	sprintf(fpath, "%s%s",dirpath,path);
 
-	if(encv1 != NULL)
-	{
+	if(encv1 != NULL){
 		caesardek(encv1);
 		sprintf(fpath,"%s/%s",dirpath,encv1);
 	}
@@ -175,9 +175,8 @@ static int xmp_read(const char *path, char *buf, size_t size, off_t offset, stru
 	close(fd);
 	return res;
 }
-
 static int xmp_mkdir(const char *path, mode_t mode){
-    	int res;
+    int res;
 	char fullpath[1000];
 	char *encv1 = strstr(path,"encv1_");
 	sprintf(fullpath ,"%s%s",dirpath,path);
@@ -186,16 +185,16 @@ static int xmp_mkdir(const char *path, mode_t mode){
 		caesardek(encv1);
 		sprintf(fullpath,"%s/%s",dirpath,encv1);
 	}
-
-    	res = mkdir(fullpath, mode);
-   	 if (res == -1)
-   	   return -errno;
+	res = mkdir(fullpath, mode);
+    	if (res == -1){
+      		return -errno;
+    	}
     	else{
       		char deskripsi[1000];
       		sprintf(deskripsi,"%s",fullpath);
       		logs("MKDIR", deskripsi);
     	}
-    	return 0;
+    return 0;
 }
 
 static int xmp_rmdir(const char *path)
@@ -205,41 +204,43 @@ static int xmp_rmdir(const char *path)
     	sprintf(fullpath, "%s%s",dirpath,path);
 
     	res = rmdir(fullpath);
-    	if (res == -1)
-      		return -errno;
+    	if (res == -1){
+    	  return -errno;
+    	}
     	else{
         	char deskripsi[1000];
         	sprintf(deskripsi,"%s",fullpath);
         	logs("RMDIR",deskripsi);
     	}
-    	return 0;
+    return 0;
 }
 
-static int xmp_rename(const char *from, const char *to) {
-	int res;
-    	char from1[1000];
+static int xmp_rename(const char *from, const char *to){
+    	int res;
+	char from1[1000];
 	char to1[1000];
 	char *ffrom = strstr(from,"encv1_");
 	char *fto = strstr(from,"encv1_");
 	sprintf(from1,"%s%s",dirpath,from);
 	sprintf(to1,"%s%s",dirpath,to);
 
-	if(ffrom != NULL && fto == NULL)	
+	if(ffrom != NULL && fto == NULL){
 		sprintf(from1,"%s/%s",dirpath,ffrom);
+	}
 	else if(fto != NULL && ffrom == NULL){
-		caesardek(fto);
 		sprintf(to1,"%s/%s",dirpath,fto);
 	}
 
-	res = rename(from1, to1);
-    	if (res == -1)
-      		return -errno;
+    	res = rename(from1, to1);
+    	if (res == -1){
+     	 	return -errno;
+    	}
     	else{
       		char deskripsi[1000];
       		sprintf(deskripsi,"%s::%s",from1, to1);
       		logs("RENAME", deskripsi);
-    	}
-	return 0;
+   	}
+    return 0;
 }
 
 static struct fuse_operations xmp_oper = {
