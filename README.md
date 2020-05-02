@@ -39,3 +39,13 @@ Digunakan untuk enskripsi versi 1
 Digunakan untuk dekrip versi 1
 <br/>![fslog](https://user-images.githubusercontent.com/56763570/80864803-d737bc00-8c39-11ea-9918-60e681554d87.PNG)<br/>
 Digunakan untuk menyimpan daftar command system call. Command akan disimpan di file fs.log dan setiap command baru yang dilakukan ditambahkan ke file fs.log tersebut.
+
+<br/>![runnn](https://user-images.githubusercontent.com/56763570/80865046-8de86c00-8c3b-11ea-8b4f-7e2b986fc005.jpg)<br/>
+<br/>![encvgitdocument](https://user-images.githubusercontent.com/56763570/80864941-e53a0c80-8c3a-11ea-9e67-1538f63776c9.jpg)<br/>
+<br/>![sbdencv1](https://user-images.githubusercontent.com/56763570/80865075-bbcdb080-8c3b-11ea-81ef-780beb901196.jpg)<br/>
+## Hasil Running no.1
+<br/>![runsbd](https://user-images.githubusercontent.com/56763570/80865096-dacc4280-8c3b-11ea-92ef-5b166eab6d8a.jpg)<br/>
+<br/>![fuse11runn](https://user-images.githubusercontent.com/56763570/80865008-52e63880-8c3b-11ea-867f-01a4136a5541.jpg)<br/>
+## Hasil Running no.4
+<br/>![fsgithubfile](https://user-images.githubusercontent.com/56763570/80864993-33e7a680-8c3b-11ea-854c-14909ff86700.jpg)<br/>
+
