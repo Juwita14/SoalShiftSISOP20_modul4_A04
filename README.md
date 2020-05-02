@@ -17,3 +17,13 @@ Misal kan ada file bernama “kelincilucu.jpg” dalam directory FOTO_PENTING, d
 “encv1_rahasia/FOTO_PENTING/kelincilucu.jpg” => “encv1_rahasia/ULlL@u]AlZA(/g7D.|_.Da_a.jpg<br/>
 Note : Dalam penamaan file ‘/’ diabaikan, dan ekstensi tidak perlu di encrypt.<br/>
 
+# Soal 4
+a.Sebuah berkas nantinya akan terbentuk bernama "fs.log" di direktori *home* pengguna (/home/[user]/fs.log) yang berguna menyimpan daftar perintah system call yang telah dijalankan.<br/>
+b.Agar nantinya pencatatan lebih rapi dan terstruktur, log akan dibagi menjadi beberapa level yaitu INFO dan WARNING.<br/>
+c.Untuk log level WARNING, merupakan pencatatan log untuk syscall rmdir dan unlink.<br/>
+d.Sisanya, akan dicatat dengan level INFO.<br/>
+e.Format untuk logging yaitu:<br/>
+`[LEVEL]::[yy][mm][dd]-[HH]:[MM]:[SS]::[CMD]::[DESC ...]`
+`INFO::200419-18:29:28::MKDIR::/iz1`
+`INFO::200419-18:29:33::CREAT::/iz1/yena.jpg`
+`INFO::200419-18:29:33::RENAME::/iz1/yena.jpg::/iz1/yena.jpeg`
