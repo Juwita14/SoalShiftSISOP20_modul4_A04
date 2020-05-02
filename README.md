@@ -48,4 +48,4 @@ Digunakan untuk menyimpan daftar command system call. Command akan disimpan di f
 <br/>![fuse11runn](https://user-images.githubusercontent.com/56763570/80865008-52e63880-8c3b-11ea-867f-01a4136a5541.jpg)<br/>
 ## Hasil Running no.4
 <br/>![fsgithubfile](https://user-images.githubusercontent.com/56763570/80864993-33e7a680-8c3b-11ea-854c-14909ff86700.jpg)<br/>
-
+<br/>![isifslog](https://user-images.githubusercontent.com/56763570/80865152-31398100-8c3c-11ea-9440-082a29af0bd4.jpg)<br/>
